@@ -1,7 +1,7 @@
 define(async () => {
     ofa.onState.loading = () => {
         return `
-        <link rel="stylesheet" href="/css/public.css">
+        <link rel="stylesheet" href="${location.origin + location.pathname.replace(/(.+)\/.+/, "$1")}/css/public.css">
         <div style="display:flex;justify-content:center;align-items:center;width:100%;height:100%;font-size:14px;color:#aaa;">
             <i class="loading_icon"></i>
         </div>`;
