@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transaction-show-test</title>
+    <script src="../../js/ofa.js"></script>
+    <script src="./mockdata.js"></script>
+    <script src="../../js/ok.js"></script>
+</head>
+
+<body>
+    <!-- <div style="background-color:#fff;color:#000;">
+        <transactions-show></transactions-show>
+    </div> -->
+    <script>
+        // 会触发5次
+        const tester = expect(9, 'transactions-show test');
+
+        $('body').push(`
+        <div style="background-color:#fff;color:#000;">
+            <transactions-show></transactions-show>
+        </div>
+        `);
+        (async () => {
+            await load("./transactions-show.js");
+
+            const target = $("transactions-show");
+
+            tester.ok(target.pageCount == 0, "before:pageCount ok");
+            tester.ok(!target.txData.length && !target.listData.length, "before:init data ok");
+
+            // 添加模拟数据
+            $("transactions-show").txData = mockdata;
+
+            setTimeout(() => {
+                tester.ok(target.listData.length == 10 && target.shadow.$(".fill_content").length == 10, "render list data length ok");
+                tester.ok(target.pageCount == 8, "after:pageCount ok");
+
+                tester.ok(target.shadow.$(".fill_content")[1].$("block-transcation").shadow.$(".line_val").text == '0.00093431 BTC', 'render item 1 ok');
+                tester.ok(target.shadow.$(".fill_content")[2].$("block-transcation").shadow.$(".line_val").text == '0.0005 BTC', 'render item 2 ok');
+
+                // 点击3下下一页
+                target.shadow.$(".next_btn").ele.click();
+                target.shadow.$(".next_btn").ele.click();
+                target.shadow.$(".next_btn").ele.click();
+
+                setTimeout(() => {
+                    tester.ok(target.shadow.$(".fill_content")[1].$("block-transcation").shadow.$(".line_val").text == '0.00364584 BTC', 'page 4 item ok');
+
+                    // 点击上一页
+                    target.shadow.$(".prev_btn").ele.click();
+
+                    setTimeout(() => {
+                        tester.ok(target.shadow.$(".fill_content")[1].$("block-transcation").shadow.$(".line_val").text == '0.00020961 BTC', 'page 3 item ok');
+
+                        // 直接修改页面
+                        target.pageId = 5
+
+                        setTimeout(() => {
+                            tester.ok(target.shadow.$(".fill_content")[1].$("block-transcation").shadow.$(".line_val").text == '0.0033226 BTC', 'page 5 item ok');
+                        }, 200);
+                    }, 200);
+                }, 200);
+            }, 200);
+        })();    
+    </script>
+</body>
+
+</html>

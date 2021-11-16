@@ -1,0 +1,37 @@
+name: ofa-blocklet
+description: use ofajs blocklet demo
+group: static
+main: .
+author:
+  name: YAO
+specVersion: 1.1.1
+files:
+  - blocklet.md
+  - screenshots
+interfaces:
+  - type: web
+    name: publicUrl
+    path: /
+    prefix: '*'
+    port: BLOCKLET_PORT
+    protocol: http
+did: z8iZzp3xYvPCxDyNVCnk8xAnHCsQj1aFaMXZN
+version: 1.0.0
+community: ''
+documentation: ''
+homepage: ''
+license: ''
+charging:
+  price: 0
+  tokens: []
+  shares: []
+timeout:
+  start: 60
+requirements:
+  abtnode: '>=1.2.0'
+  os: '*'
+  cpu: '*'
+environments: []
+capabilities: {}
+screenshots: []
+children: []

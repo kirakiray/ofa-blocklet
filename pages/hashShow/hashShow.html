@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="./main.css">
+<link rel="stylesheet" href="../../css/public.css">
+<div class="top_bar">
+    <div class="backbtn" @click="app.back();">
+        🔙
+    </div>
+</div>
+<div class="main">
+    <div class="title" class:hide="!blockData.block_index">
+        Block {{blockData.block_index}}
+    </div>
+    <div class="line">
+        <div class="line_key">Hash</div>
+        <div class="line_val">{{query.hash}}</div>
+    </div>
+    <div #if="loading" style="text-align: center;margin-top:10px;">
+        <i class="loading_icon"></i>
+    </div>
+    <div #else-if="err" style="color:red;text-align: center;padding: 30px;" class="p_404">{{err}}</div>
+    <div #else>
+        <div class="line">
+            <div class="line_key">Block</div>
+            <div class="line_val">{{blockData.block_index}}</div>
+        </div>
+        <div class="line">
+            <div class="line_key">Timestamp</div>
+            <div class="line_val">{{time}}</div>
+        </div>
+        <div class="line">
+            <div class="line_key">Number of Transactions</div>
+            <div class="line_val">{{blockData.n_tx}}</div>
+        </div>
+        <div class="line">
+            <div class="line_key">height</div>
+            <div class="line_val">{{blockData.height}}</div>
+        </div>
+        <div class="line">
+            <div class="line_key">Merkle root</div>
+            <div class="line_val">{{blockData.mrkl_root}}</div>
+        </div>
+        <div class="line">
+            <div class="line_key">Version</div>
+            <div class="line_val">{{ver}}</div>
+        </div>
+        <div class="line">
+            <div class="line_key">Bits</div>
+            <div class="line_val">{{toUsDoll(blockData.bits)}} bytes</div>
+        </div>
+        <div class="line">
+            <div class="line_key">Weight</div>
+            <div class="line_val">{{toUsDoll(blockData.weight)}} WU </div>
+        </div>
+        <div class="line">
+            <div class="line_key">Size</div>
+            <div class="line_val">{{toUsDoll(blockData.size)}} bytes</div>
+        </div>
+        <div class="line">
+            <div class="line_key">Fee Reward</div>
+            <div class="line_val">{{fee}}</div>
+        </div>
+    </div>
+    <div class="title" class:hide="!blockData.block_index" style="margin-top:10px;">Block Transactions </div>
+    <div #if="!loading && !err">
+        <transactions-show :tx-data="blockData.tx"></transactions-show>
+        <!-- <transactions-show></transactions-show> -->
+    </div>
+    <div class="bottom_back" style="text-align: center;">
+        <button @click="app.back()">返回</button>
+    </div>
+</div>

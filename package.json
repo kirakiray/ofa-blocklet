@@ -1,0 +1,14 @@
+{
+  "name": "ofa-blocklet",
+  "version": "1.0.0",
+  "description": "该应用采用 [ofajs](https://ofajs.com/) 开发；相关使用方法可[查阅文档](https://ofajs.com/)；",
+  "main": "index.html",
+  "scripts": {
+    "server": "node scripts/server.js",
+    "dev": "open http://127.0.0.1:10826/index.html & npm run server",
+    "test": "open http://127.0.0.1:10826/test.html & npm run server",
+    "blockdev": "blocklet dev ."
+  },
+  "author": "YAO",
+  "license": "ISC"
+}

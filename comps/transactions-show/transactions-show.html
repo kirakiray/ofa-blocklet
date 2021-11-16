@@ -1,0 +1,26 @@
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+    }
+
+    .pagination button {
+        margin: 0 10px;
+    }
+</style>
+<div fill:haha="listData" class="fill_content">
+    <!-- 填充的元素 -->
+</div>
+<div class="pagination">
+    <button attr:disabled="pageId <= 1 ? '' : null" @click="pageId--" class="prev_btn">上一页</button>
+    共{{pageCount}}页，当前页数 <input type="number" sync:value="pageId" min="1" attr:max="pageCount"
+        style="margin-left:10px;width:30px;text-align:center;" />
+    <button attr:disabled="pageId >= pageCount ? '' : null" @click="pageId++" class="next_btn">下一页</button>
+</div>
+
+<!-- 单条transcation数据展示模板 -->
+<div temp:haha>
+    <block-transcation :transcation="$data"></block-transcation>
+</div>

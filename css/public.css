@@ -1,0 +1,18 @@
+.loading_icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url(loading.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: loading_anime ease 1s infinite;
+}
+@keyframes loading_anime {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
