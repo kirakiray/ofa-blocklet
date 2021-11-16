@@ -37,6 +37,8 @@
 
 在构建 静态服务器 获 静态Blocklets 的相对地址上；直接访问 [`test.html`](test.html) 总览测试；
 
+或直接点击 [在线测试](https://kirakiray.github.io/ofa-blocklet/test.html) 查看;
+
 ### block-transcation
 
 单条transcation数据展示组件

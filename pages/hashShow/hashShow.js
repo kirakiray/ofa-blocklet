@@ -1,5 +1,5 @@
 Page(async ({ load }) => {
-    await load("/comps/transactions-show -p");
+    await load("../../comps/transactions-show -p");
 
     return {
         data: {
